@@ -16,3 +16,17 @@ connection_socket, address = server_socket.accept()
 # connection_socket and is the connection to the client
 # address of the client that connected, including its IP address and port
 print("connected")
+
+# outgoing message
+outgoing_message = "hello client. well done on connecting"
+outgoing_data = outgoing_message.encode()
+connection_socket.send(outgoing_data)
+
+# incoming message
+incoming_data = connection_socket.recv(1024)
+incoming_message = incoming_data.decode()
+print(incoming_message)
+
+# closing connection
+connection_socket.close()
+server_socket.close()
